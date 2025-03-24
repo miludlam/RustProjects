@@ -1,5 +1,6 @@
 # JetBrains project files
 .idea
 
-# Rust binaries
-/target/
+# Cargo generated directories & files
+target/
+debug/
