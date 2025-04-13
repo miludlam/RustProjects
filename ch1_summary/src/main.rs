@@ -80,10 +80,19 @@ fn temp_converter() {
  * Fibonacci number generator. Accepts and integer and returns the
  * Fib number up to that count.
  */
+fn fib_recursive(num: u16) -> u16 {
+    if num <= 1 {
+        return num;
+    } else {
+        return fib_recursive(num - 1) + fib_recursive(num - 2);
+    }
+}
+
 fn fibonacci() {
     println!("Enter an integer to calculate a new Fibonacci Number, or X to quit.");
 
     loop {
+        // program loop to run until exit
         let mut input = String::new();
 
         io::stdin()
@@ -95,18 +104,23 @@ fn fibonacci() {
             break;
         }
 
-        let count: u32 = match input.trim().parse() {
+        let count: u16 = match input.parse() {
             Ok(num) => num, // only match positive integers
             Err(_) => {
                 println!("Input must be a positive integer");
-                continue
+                continue;
             }
         };
 
-        let mut sum: u32 = 0;
+        let mut sum: u16 = 0;
 
         // loop for FibNum
+        for number in 1..count + 1 {
+            let seq_sum: u16 = fib_recursive(number);
+            print!("{seq_sum} ");
+            sum += seq_sum;
+        }
 
-        println!("The Fibonacci number for F({count}) is {sum}");
+        println!("\nThe Fibonacci sum for F({count}) is {sum}");
     }
 }
