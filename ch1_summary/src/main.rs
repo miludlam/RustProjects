@@ -122,5 +122,6 @@ fn fibonacci() {
         }
 
         println!("\nThe Fibonacci sum for F({count}) is {sum}");
+        println!("Enter a new integer or X to quit");
     }
 }
