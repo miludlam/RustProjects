@@ -14,6 +14,9 @@ fn main() {
     // Generate the nth Fibonacci number
     fibonacci();
 
+    println!("Launching 12 Days of Christmas...");
+    twelve_days_of_xmas();
+
     println!("Exiting...");
 }
 
@@ -129,5 +132,45 @@ fn fibonacci() {
 
         println!("\nThe Fibonacci sum for F({count}) is {sum}");
         println!("Enter a new integer or X to quit");
+    }
+}
+
+/**
+ * Iterates through the 12 days of Christmas and prints out the lyrics
+ */
+fn twelve_days_of_xmas() {
+    let special_num_suffix = ["st", "nd", "rd"];
+    let gifts = [
+        "a partridge in a pear tree",
+        "two turtle doves",
+        "three French hens",
+        "four calling birds",
+        "five golden rings",
+        "six geese a-laying",
+        "seven swans a-swimming",
+        "eight maids a-milking",
+        "nine ladies dancing",
+        "ten lords a-leaping",
+        "eleven pipers piping",
+        "twelve drummers drumming",
+    ];
+
+    for day in 0..gifts.len() {
+        let mut suffix = "th";
+        if day < 3 {
+            suffix = special_num_suffix[day];
+        }
+        println!(
+            "On the {}{} of Christmas, my true love gave to me...",
+            day + 1,
+            suffix
+        );
+        for count in (0..day + 1).rev() {
+            print!("\t");
+            if count == 0 && day != 0 {
+                print!("and ");
+            }
+            println!("{}", gifts[count]);
+        }
     }
 }
