@@ -1,24 +1,30 @@
 use std::io;
 
 fn main() {
-    println!("Hello, world!");
-
+    println!("Launching Temperature Converter...");
     // Convert temperatures between Fahrenheit and Celsius.
     temp_converter();
+
+    println!("Launching Fibonacci Number Generator...");
+    // Generate the nth Fibonacci number
+    fibonacci();
+
+    println!("Exiting...");
 }
 
-// Converts from Celcius to Fahrenheit
+// Converts from Celsius to Fahrenheit
 fn c_to_f(degree: f32) {
     let temp_converted = (degree * 1.8) + 32.0;
     println!("{:.1}C is {:.1}F", degree, temp_converted);
 }
 
-// Converts from Fahrenheit to Celcius
+// Converts from Fahrenheit to Celsius
 fn f_to_c(degree: f32) {
     let temp_converted = (degree - 32.0) * 5.0 / 9.0;
     println!("{:.1}F is {:.1}C", degree, temp_converted);
 }
 
+// Driver function for converting between Celsius and Fahrenheit
 fn temp_converter() {
     println!("Enter a temperature followed by an F or C (e.g. 32F), or X to quit.");
 
@@ -43,7 +49,6 @@ fn temp_converter() {
                 "F"
             }
             "x" | "X" => {
-                println!("Exiting...");
                 break;
             }
             _ => {
@@ -68,5 +73,40 @@ fn temp_converter() {
         }
 
         println!("Enter a new temperature or X to quit");
+    }
+}
+
+/**
+ * Fibonacci number generator. Accepts and integer and returns the
+ * Fib number up to that count.
+ */
+fn fibonacci() {
+    println!("Enter an integer to calculate a new Fibonacci Number, or X to quit.");
+
+    loop {
+        let mut input = String::new();
+
+        io::stdin()
+            .read_line(&mut input)
+            .expect("Failed to read line");
+
+        let input = input.trim();
+        if input == "x" || input == "X" {
+            break;
+        }
+
+        let count: u32 = match input.trim().parse() {
+            Ok(num) => num, // only match positive integers
+            Err(_) => {
+                println!("Input must be a positive integer");
+                continue
+            }
+        };
+
+        let mut sum: u32 = 0;
+
+        // loop for FibNum
+
+        println!("The Fibonacci number for F({count}) is {sum}");
     }
 }
