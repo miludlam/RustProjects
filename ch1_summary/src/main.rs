@@ -1,5 +1,10 @@
 use std::io;
 
+/**
+ * Main function for program entry. Cycles through the three
+ * chapter summary questions, temperature converter, Fibonacci
+ * sequencer, and lyrics for 12 days of Christmas.
+ */
 fn main() {
     println!("Launching Temperature Converter...");
     // Convert temperatures between Fahrenheit and Celsius.
@@ -12,19 +17,20 @@ fn main() {
     println!("Exiting...");
 }
 
-// Converts from Celsius to Fahrenheit
+/**
+ * Functions for temperature conversion. Prompts for degree and unit
+ * and makes conversion decision based on inputs.
+ */
 fn c_to_f(degree: f32) {
     let temp_converted = (degree * 1.8) + 32.0;
     println!("{:.1}C is {:.1}F", degree, temp_converted);
 }
 
-// Converts from Fahrenheit to Celsius
 fn f_to_c(degree: f32) {
     let temp_converted = (degree - 32.0) * 5.0 / 9.0;
     println!("{:.1}F is {:.1}C", degree, temp_converted);
 }
 
-// Driver function for converting between Celsius and Fahrenheit
 fn temp_converter() {
     println!("Enter a temperature followed by an F or C (e.g. 32F), or X to quit.");
 
